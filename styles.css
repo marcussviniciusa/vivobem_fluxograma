@@ -1,23 +1,34 @@
-/* Variáveis CSS - Design System CODIVAR */
+/* Variáveis CSS - Design System CODIVAR Moderno */
 :root {
-    /* Cores principais */
-    --primary-blue: #4A90E2;
-    --primary-green: #7AC142;
-    --light-green: #A8D982;
+    /* Cores principais - Tons mais modernos */
+    --primary-blue: #3B82F6;
+    --primary-green: #10B981;
+    --accent-blue: #60A5FA;
+    --accent-green: #34D399;
 
-    /* Cores de status */
-    --status-waiting: #FFA726;
-    --status-processing: #42A5F5;
-    --status-completed: #66BB6A;
-    --status-error: #EF5350;
+    /* Cores de status - Mais suaves */
+    --status-waiting: #F59E0B;
+    --status-processing: #3B82F6;
+    --status-completed: #10B981;
+    --status-error: #EF4444;
 
-    /* Tons neutros */
+    /* Sistema de cores moderno */
     --white: #FFFFFF;
-    --light-gray: #F8F9FA;
-    --medium-gray: #E9ECEF;
-    --dark-gray: #6C757D;
-    --darker-gray: #343A40;
-    --black: #212529;
+    --gray-50: #F8FAFC;
+    --gray-100: #F1F5F9;
+    --gray-200: #E2E8F0;
+    --gray-300: #CBD5E1;
+    --gray-400: #94A3B8;
+    --gray-500: #64748B;
+    --gray-600: #475569;
+    --gray-700: #334155;
+    --gray-800: #1E293B;
+    --gray-900: #0F172A;
+
+    /* Gradientes modernos */
+    --gradient-primary: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-green) 100%);
+    --gradient-secondary: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-green) 100%);
+    --gradient-glass: rgba(255, 255, 255, 0.1);
 
     /* Tipografia */
     --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -29,6 +40,7 @@
     --font-size-2xl: 1.5rem;
     --font-size-3xl: 1.875rem;
     --font-size-4xl: 2.25rem;
+    --font-size-5xl: 3rem;
 
     /* Espaçamentos */
     --spacing-xs: 0.25rem;
@@ -38,14 +50,26 @@
     --spacing-xl: 2rem;
     --spacing-2xl: 3rem;
     --spacing-3xl: 4rem;
+    --spacing-4xl: 5rem;
 
-    /* Bordas e sombras */
+    /* Bordas modernas */
+    --border-radius-sm: 6px;
     --border-radius: 8px;
     --border-radius-lg: 12px;
+    --border-radius-xl: 16px;
+    --border-radius-2xl: 24px;
+
+    /* Sombras modernas - Mais sutis */
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+    /* Backdrop filter */
+    --blur-sm: blur(4px);
+    --blur-md: blur(8px);
+    --blur-lg: blur(16px);
 }
 
 /* Reset e base */
@@ -63,8 +87,10 @@ body {
     font-family: var(--font-family);
     font-size: var(--font-size-base);
     line-height: 1.6;
-    color: var(--darker-gray);
-    background-color: var(--light-gray);
+    color: var(--gray-700);
+    background: var(--gray-50);
+    font-feature-settings: "cv11", "ss01";
+    font-variation-settings: "opsz" 32;
 }
 
 .container {
@@ -73,14 +99,17 @@ body {
     padding: 0 var(--spacing-md);
 }
 
-/* Header */
+/* Header Moderno */
 .header {
-    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-green) 100%);
+    background: var(--gradient-primary);
     color: var(--white);
-    padding: var(--spacing-3xl) 0;
+    padding: var(--spacing-4xl) 0;
     text-align: center;
     position: relative;
     overflow: hidden;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
 }
 
 .header::before {
@@ -90,8 +119,21 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.05"><circle cx="30" cy="30" r="2"/></g></svg>') repeat;
+    background:
+        radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
     pointer-events: none;
+}
+
+.header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--gradient-secondary);
 }
 
 .logo-container {
@@ -101,41 +143,61 @@ body {
 }
 
 .main-logo {
-    height: 80px;
+    height: 100px;
     width: auto;
     max-width: 100%;
     object-fit: contain;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
 }
 
 .main-title {
-    font-size: var(--font-size-4xl);
-    font-weight: 600;
-    margin-bottom: var(--spacing-md);
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: var(--font-size-5xl);
+    font-weight: 700;
+    margin-bottom: var(--spacing-lg);
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     position: relative;
     z-index: 1;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
 }
 
 .subtitle {
-    font-size: var(--font-size-lg);
-    opacity: 0.95;
+    font-size: var(--font-size-xl);
+    opacity: 0.9;
     font-weight: 400;
     position: relative;
     z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
-/* Seção de Introdução */
+/* Seção de Introdução Moderna */
 .intro-section {
-    padding: var(--spacing-3xl) 0;
+    padding: var(--spacing-4xl) 0;
     background: var(--white);
+    position: relative;
 }
 
 .intro-card {
     background: var(--white);
-    border-radius: var(--border-radius-lg);
-    padding: var(--spacing-2xl);
-    box-shadow: var(--shadow-lg);
-    border: 1px solid var(--medium-gray);
+    border-radius: var(--border-radius-2xl);
+    padding: var(--spacing-3xl);
+    box-shadow: var(--shadow-xl);
+    border: 1px solid var(--gray-200);
+    backdrop-filter: var(--blur-sm);
+    position: relative;
+    overflow: hidden;
+}
+
+.intro-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-secondary);
 }
 
 .intro-card h2 {
@@ -333,44 +395,113 @@ body {
     font-weight: 600;
 }
 
-/* Seção Técnica */
+/* Seção Técnica Moderna */
 .tech-section {
-    padding: var(--spacing-3xl) 0;
-    background: var(--darker-gray);
+    padding: var(--spacing-4xl) 0;
+    background: var(--gradient-primary);
     color: var(--white);
+    position: relative;
+    overflow: hidden;
+}
+
+.tech-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.08) 0%, transparent 50%);
+    pointer-events: none;
 }
 
 .tech-card {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: var(--border-radius-lg);
-    padding: var(--spacing-2xl);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius-2xl);
+    padding: var(--spacing-3xl);
+    backdrop-filter: var(--blur-lg);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: var(--shadow-2xl);
+    position: relative;
+    z-index: 1;
+}
+
+.tech-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-secondary);
+    border-radius: var(--border-radius-2xl) var(--border-radius-2xl) 0 0;
 }
 
 .tech-card h2 {
-    font-size: var(--font-size-2xl);
-    font-weight: 600;
-    margin-bottom: var(--spacing-xl);
+    font-size: var(--font-size-3xl);
+    font-weight: 700;
+    margin-bottom: var(--spacing-2xl);
     text-align: center;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: -0.025em;
 }
 
 .tech-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: var(--spacing-lg);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-xl);
+}
+
+.tech-item {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius-xl);
+    padding: var(--spacing-xl);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: var(--blur-sm);
+    transition: all 0.3s ease;
+}
+
+.tech-item:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
 .tech-item h4 {
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-xl);
     font-weight: 600;
-    margin-bottom: var(--spacing-sm);
-    color: var(--primary-green);
+    margin-bottom: var(--spacing-md);
+    color: var(--white);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.tech-item h4::before {
+    content: '⚡';
+    font-size: var(--font-size-lg);
+}
+
+.tech-item:nth-child(2) h4::before {
+    content: '🔗';
+}
+
+.tech-item:nth-child(3) h4::before {
+    content: '🛡️';
+}
+
+.tech-item:nth-child(4) h4::before {
+    content: '🤖';
 }
 
 .tech-item p {
-    opacity: 0.9;
+    opacity: 0.95;
     line-height: 1.6;
+    font-size: var(--font-size-base);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 /* Benefícios principais */
@@ -475,11 +606,22 @@ body {
     background: rgba(255, 255, 255, 0.2);
 }
 
-/* Footer */
+/* Footer Moderno */
 .footer {
-    padding: var(--spacing-3xl) 0;
-    background: var(--darker-gray);
+    padding: var(--spacing-4xl) 0;
+    background: var(--gray-900);
     color: var(--white);
+    position: relative;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--gradient-secondary);
 }
 
 .footer-content {
@@ -487,13 +629,14 @@ body {
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: var(--spacing-lg);
+    gap: var(--spacing-xl);
 }
 
 .footer-logo-img {
-    height: 50px;
+    height: 60px;
     width: auto;
     object-fit: contain;
+    filter: brightness(1.1) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
 }
 
 .footer-info {
@@ -501,17 +644,26 @@ body {
 }
 
 .footer-info p {
-    margin-bottom: var(--spacing-xs);
-    opacity: 0.8;
+    margin-bottom: var(--spacing-sm);
+    color: var(--gray-200);
+    font-size: var(--font-size-base);
+    font-weight: 400;
+    line-height: 1.6;
 }
 
 .development-note {
     font-size: var(--font-size-sm);
-    color: var(--primary-green);
-    font-weight: 500;
+    color: var(--accent-green);
+    font-weight: 600;
+    background: rgba(16, 185, 129, 0.1);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    display: inline-block;
+    margin-top: var(--spacing-sm);
 }
 
-/* Animações */
+/* Animações Modernas */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -523,6 +675,53 @@ body {
     }
 }
 
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Classes de animação para fallback */
+.css-animations .timeline-card,
+.css-animations .benefit-card,
+.css-animations .benefit-item {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.css-animations .timeline-card.animate-in,
+.css-animations .benefit-card.animate-in,
+.css-animations .benefit-item.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /* Responsividade */
 @media (max-width: 768px) {
     .container {
@@ -530,11 +729,11 @@ body {
     }
 
     .main-title {
-        font-size: var(--font-size-3xl);
+        font-size: var(--font-size-4xl);
     }
 
     .subtitle {
-        font-size: var(--font-size-base);
+        font-size: var(--font-size-lg);
     }
 
     .timeline::before {
@@ -586,10 +785,15 @@ body {
     .footer-content {
         flex-direction: column;
         text-align: center;
+        gap: var(--spacing-lg);
     }
 
     .footer-info {
         text-align: center;
+    }
+
+    .footer-logo-img {
+        height: 50px;
     }
 
     .intro-card {
@@ -615,11 +819,11 @@ body {
     }
 
     .main-logo {
-        height: 60px;
+        height: 80px;
     }
 
     .footer-logo-img {
-        height: 40px;
+        height: 45px;
     }
 
     .timeline-item {
