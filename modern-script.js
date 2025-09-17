@@ -375,6 +375,9 @@ function getModalDetails(stepNumber) {
         1: `
             <div class="detail-grid">
                 <div class="detail-item">
+                    <strong>📋 Total arquivos:</strong> 6 documentos obrigatórios
+                </div>
+                <div class="detail-item">
                     <strong>⚡ Processamento:</strong> Automático com IA
                 </div>
                 <div class="detail-item">
@@ -384,7 +387,7 @@ function getModalDetails(stepNumber) {
                     <strong>📱 Formatos:</strong> PDF, JPG, PNG, WEBP
                 </div>
                 <div class="detail-item">
-                    <strong>⏱️ Tempo médio:</strong> 2-5 minutos
+                    <strong>⏱️ Tempo médio:</strong> 3-7 minutos
                 </div>
             </div>
         `,

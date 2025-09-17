@@ -134,10 +134,11 @@ function getTimelineDetails(stepNumber) {
     const details = {
         1: `
             <ul>
+                <li><strong>Total de arquivos:</strong> 6 documentos obrigatórios</li>
                 <li><strong>Formatos aceitos:</strong> PDF, JPG, PNG</li>
                 <li><strong>Tamanho máximo:</strong> 5MB por arquivo</li>
                 <li><strong>Validação:</strong> Automática com OCR</li>
-                <li><strong>Tempo médio:</strong> 2-5 minutos</li>
+                <li><strong>Tempo médio:</strong> 3-7 minutos</li>
             </ul>
         `,
         2: `
